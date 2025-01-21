@@ -13,9 +13,9 @@ const Portfolio = () => {
     skills: {
       title: "Skills",
       items: [
-        "Frontend: React, JavaScript, HTML, CSS,",
-        "Backend: Node.js,",
-        "Database:PostgreSQL",
+        "Frontend: React, JavaScript, HTML, CSS",
+        "Backend: Node.js",
+        "Database: PostgreSQL",
       ]
     },
     projects: {
@@ -24,10 +24,10 @@ const Portfolio = () => {
         {
           title: "Professional-README-Generator",
           description: "Generate a README file by using a command-line application.",
-          tech: ["JavaScript",]
+          tech: ["JavaScript"]
         },
         {
-          title: "Vehicle-Builder ",
+          title: "Vehicle-Builder",
           description: "Created a vehicle Builder by using command line",
           tech: ["TypeScript"]
         },
@@ -40,16 +40,14 @@ const Portfolio = () => {
     }
   };
 
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div id="root">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
+      <nav className="card fade-in">
+        <div className="container">
+          <div className="flex justify-between items-center">
             <span className="text-xl font-bold">Nolan Marshke</span>
             
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2"
@@ -57,54 +55,46 @@ const Portfolio = () => {
               {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
             </button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
-              <a href="#skills" className="text-gray-600 hover:text-gray-900">Skills</a>
-              <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
-            </div>
+            
           </div>
 
-          {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden pb-4">
-              <a href="#about" className="block py-2 text-gray-600">About</a>
-              <a href="#skills" className="block py-2 text-gray-600">Skills</a>
-              <a href="#projects" className="block py-2 text-gray-600">Projects</a>
-              <a href="#contact" className="block py-2 text-gray-600">Contact</a>
+            <div className="md:hidden py-4 fade-in">
+              {['about', 'skills', 'projects', 'contact'].map((item) => (
+                <a key={item} href={`#${item}`} className="block py-2">
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </a>
+              ))}
             </div>
           )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">Software Developer</h1>
-          <p className="text-xl text-gray-600 mb-8">Building digital experiences that make a difference</p>
-          <img
-            src="/api/placeholder/150/150"
-            alt="Profile"
-            className="rounded-full mx-auto mb-8"
-          />
-        </div>
+      <div className="container fade-in">
+        <h1>Software Developer</h1>
+        <p className="text-xl mb-8">Building digital experiences that make a difference</p>
+        <img
+          src="/api/placeholder/150/150"
+          alt="Profile"
+          className="hero-image rounded-full"
+        />
       </div>
 
-{/* Main Content */}
-<main className="max-w-6xl mx-auto px-4 py-12">
+      {/* Main Content */}
+      <main className="container">
         {/* About Section */}
-        <section id="about" className="mb-20">
-          <h2 className="text-3xl font-bold mb-8">{sections.about.title}</h2>
-          <p className="text-lg text-gray-600">{sections.about.content}</p>
+        <section id="about" className="card fade-in">
+          <h2>{sections.about.title}</h2>
+          <p>{sections.about.content}</p>
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="mb-20">
-          <h2 className="text-3xl font-bold mb-8">{sections.skills.title}</h2>
+        <section id="skills" className="card fade-in">
+          <h2>{sections.skills.title}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sections.skills.items.map((skill, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow">
+              <div key={index} className="skill-item p-6">
                 {skill}
               </div>
             ))}
@@ -112,18 +102,18 @@ const Portfolio = () => {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="mb-20">
-          <h2 className="text-3xl font-bold mb-8">{sections.projects.title}</h2>
+        <section id="projects" className="card fade-in">
+          <h2>{sections.projects.title}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sections.projects.items.map((project, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow">
+              <div key={index} className="project-card p-6">
                 <h3 className="text-xl font-bold mb-4">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
+                <p className="mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 justify-center">
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
+                      className="tech-tag px-3 py-1 rounded-full text-sm"
                     >
                       {tech}
                     </span>
@@ -135,32 +125,28 @@ const Portfolio = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="text-center">
-          <h2 className="text-3xl font-bold mb-8">Contact</h2>
-          <div className="flex justify-center space-x-8">
-            <a href="https://github.com/Nolan-Marshke" className="text-gray-600 hover:text-gray-900">
+        <section id="contact" className="card fade-in">
+          <h2>Contact</h2>
+          <div className="flex justify-center space-x-8 mt-4">
+            <a href="https://github.com/Nolan-Marshke" className="contact-icon">
               <Github size={24} />
             </a>
-            <a href="https://linkedin.com" className="text-gray-600 hover:text-gray-900">
+            <a href="https://linkedin.com" className="contact-icon">
               <Linkedin size={24} />
             </a>
-            <a href="nmarshke@gmail.com" className="text-gray-600 hover:text-gray-900">
+            <a href="mailto:nmarshke@gmail.com" className="contact-icon">
               <Mail size={24} />
             </a>
           </div>
         </section>
       </main>
-  
 
-  {/* Footer */}
-  <footer className="bg-white mt-20">
-        <div className="max-w-6xl mx-auto px-4 py-8 text-center text-gray-600">
-          <p>© 2025 Nolan Marshke. All rights reserved.</p>
-        </div>
+      {/* Footer */}
+      <footer className="mt-20 text-secondary fade-in">
+        <p>© 2025 Nolan Marshke. All rights reserved.</p>
       </footer>
     </div>
   );
 };
-
 
 export default Portfolio;
