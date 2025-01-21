@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, MenuIcon, X } from 'lucide-react';
+import './App.css';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -137,13 +138,13 @@ const Portfolio = () => {
         <section id="contact" className="text-center">
           <h2 className="text-3xl font-bold mb-8">Contact</h2>
           <div className="flex justify-center space-x-8">
-            <a href="https://github.com" className="text-gray-600 hover:text-gray-900">
+            <a href="https://github.com/Nolan-Marshke" className="text-gray-600 hover:text-gray-900">
               <Github size={24} />
             </a>
             <a href="https://linkedin.com" className="text-gray-600 hover:text-gray-900">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:email@example.com" className="text-gray-600 hover:text-gray-900">
+            <a href="nmarshke@gmail.com" className="text-gray-600 hover:text-gray-900">
               <Mail size={24} />
             </a>
           </div>
